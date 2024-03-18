@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <div class="row">
+                    <!-- home dashboard Sidebar -->
+                    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                        <ul class="breadcrumb breadcrumb-item ">
+                            <li class="breadcrumb-item">
+                                <h4 class="page-title">Stock Analysis</h4>
+                            </li>
+                            <li class="breadcrumb-item bcrumb-1">
+                                <a href="index">
+                                    <i class="fas fa-home"></i> Home</a>
+                            </li>
+                            <li class="breadcrumb-item bcrumb-2">
+                                <a href="#" onclick="return false;">Reports</a>
+                            </li>
+                            <li class="breadcrumb-item active">Stock Analysis</li>
+
+                        </ul>
+                    </div>
+                    <!-- #END# home dashboard sidebar -->
+                </div>
+            </div>
+            <!--  TABLE -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                <strong>Stock List</strong>
+                            </h2>
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <!-- Table-->
+                                <table class="table   table-hover js-basic-example dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>NAME</th>
+                                            <th>QUANTITY</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for stock_analysislist in stock_analysislistarray%}
+                                        <tr>
+                                            <td>{{ forloop.counter }}</td>
+                                            <td>{{stock_analysislist.name}}</td>
+                                            <td><span class="badge bg-red">{{stock_analysislist.stock}}</span></td>
+                                            
+                                        </tr>
+                                        {% endfor %}
+
+
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+
+                                        </tr>
+                                    </tfoot>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# TABLE -->
+        </div>
+    </section>
+
+
+    {% endblock %}

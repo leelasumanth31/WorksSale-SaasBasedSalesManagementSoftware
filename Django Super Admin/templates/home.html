@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<!-- Mirrored from www.radixtouch.in/templates/admin/Worksbot/source/light/pages/examples/sign-in.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Feb 2021 12:32:35 GMT -->
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
+	<title>WorkSales-Super Admin</title>
+	<!-- Favicon-->
+	<link rel="icon" href="../static/images/sales-icon.png" type="image/x-icon">
+	<!-- Plugins Core Css -->
+	<link href="../static/css/app.min.css" rel="stylesheet">
+	<!-- Custom Css -->
+	<link href="../static/css/style.css" rel="stylesheet" />
+	<link href="../static/css/pages/extra_pages.css" rel="stylesheet" />
+</head>
+
+<body>
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form" method="POST" class="post-form" action="{% url 'login' %}">
+					{% csrf_token %}
+					<span class="login100-form-title p-b-45">
+						Login
+					</span>
+					
+					
+					<div class="wrap-input100 validate-input form-group" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100" type="text" name="username" class="form-control" required="required"/>
+						<span class="focus-input100"></span>
+						<span class="label-input100">username</span>
+					</div>
+					
+					
+					<div class="wrap-input100 validate-input form-group" data-validate="Password is required">
+						<input class="input100" type="password" name="password" class="form-control" required="required"/>
+						<span class="focus-input100"></span>
+						<span class="label-input100">Password</span>
+					</div>
+
+					<div class="flex-sb-m w-full p-t-15 p-b-20">
+						
+
+						<div>
+							<a href="{% url 'signup' %}" class="txt1">
+								Create new Account
+							</a>
+						</div>
+					</div>
+					<hgroup>
+						{% if error %}
+						<h4>{{ error }}</h4>
+						{% endif %}
+					</hgroup>
+
+					<div class="container-login100-form-btn form-group" >
+						<button class="login100-form-btn" type="submit">
+							Login
+						</button>
+					</div>
+					
+					
+
+					
+				</form>
+
+				<div class="login100-more" style="background-image: url('../static/images/pages/bg-01.png');">
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Plugins Js -->
+	<script src="../static/js/app.min.js"></script>
+	<!-- Extra page Js -->
+	<script src="../static/js/pages/examples/pages.js"></script>
+</body>
+
+
+<!-- Mirrored from www.radixtouch.in/templates/admin/Worksbot/source/light/pages/examples/sign-in.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Feb 2021 12:32:42 GMT -->
+</html>

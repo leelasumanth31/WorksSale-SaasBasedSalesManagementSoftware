@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <!-- home dashboard Sidebar -->
+                <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                    <ul class="breadcrumb breadcrumb-item ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Coupons Edit</h4>
+                        </li>
+
+
+                    </ul>
+                </div>
+                <!-- #END# home dashboard sidebar -->
+                
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+
+                <form action="/coupons_update/{{ temp.id }}" method="POST">
+                    {% csrf_token %}
+                    <div class="row clearfix">
+                        <div class="col-lg-12">
+                            <label for="name">Name</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" name="name" id="name" class="form-control"
+                                        placeholder="Enter your Name" value="{{ temp.name }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <label for="branch">Discount</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" name="discount" id="branch" class="form-control"
+                                        placeholder="Enter Discount" value="{{ temp.discount }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <label for="cash_register">Limit</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" name="limit" id="cash_register" class="form-control"
+                                        placeholder="Enter Limit" value="{{ temp.limit }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <label for="branch">Coupon-code</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" name="code" id="branch" class="form-control"
+                                        placeholder="Enter Coupon Code" value="{{ temp.code }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <label for="cash_register">Used</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" name="used" id="cash_register" class="form-control"
+                                        placeholder="Enter No of Users Used" value="{{ temp.used }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="button-demo">
+                            <a href="../coupons">
+                                <button type="button" class="btn btn-outline-danger btn-border-radius"
+                                    data-dismiss="modal">Cancel</button>
+                            </a>
+                            <button type="submit" class="btn btn-outline-success btn-border-radius">Create</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

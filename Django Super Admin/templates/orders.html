@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="block-header">
+                <div class="row">
+                    <!-- home dashboard Sidebar -->
+                    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                        <ul class="breadcrumb breadcrumb-item ">
+                            <li class="breadcrumb-item">
+                                <h4 class="page-title">Orders List</h4>
+                            </li>
+                            <li class="breadcrumb-item bcrumb-1">
+                                <a href="index">
+                                    <i class="fas fa-home"></i> Home</a>
+                            </li>
+                            <li class="breadcrumb-item active">Orders</li>
+
+                        </ul>
+                    </div>
+                    <!-- #END# home dashboard sidebar -->
+                </div>
+            </div>
+            <!--  TABLE -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                <strong>Orders List</strong>
+                            </h2>
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <!-- Table-->
+                                <table class="table   table-hover js-basic-example dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>ORDER ID</th>
+                                            <th>NAME</th>
+                                            <th>PLAN NAME</th>
+                                            <th>PRICE</th>
+                                            <th>STATUS</th>
+                                            <th>DATE</th>
+                                            <th>INVOICE</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for orderslist in orderslistarray %}
+                                        <tr>
+                                            <td>{{ forloop.counter }}</td>
+                                            <td>{{orderslist.name}}</td>
+                                            <td>{{orderslist.plan_name}}</td>
+                                            <td>{{orderslist.price}}</td>
+                                            <td><span class="label label-success">{{orderslist.status}}</span></td>
+                                            <td>{{orderslist.expiry_date}}</td>
+                                            <td>
+                                                <a href="{% url 'orders_render_pdf_view' orderslist.pk %}"  target="_blank" >
+                                                    <button type="button"
+                                                        class="btn btn-default btn-circle waves-effect waves-circle waves-float">
+                                                        <i class="material-icons">save</i>
+                                                    </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                        
+                                        
+
+
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+
+                                        </tr>
+                                    </tfoot>
+                                </table>
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# TABLE -->
+        </div>
+    </section>
+
+    {% endblock %}

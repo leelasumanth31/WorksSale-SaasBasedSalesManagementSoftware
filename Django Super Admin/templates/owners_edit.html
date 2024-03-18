@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <!-- home dashboard Sidebar -->
+                <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                    <ul class="breadcrumb breadcrumb-item ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Owners List</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="index">
+                                <i class="fas fa-home"></i> Home</a>
+                        </li>
+                        <li class="breadcrumb-item active">Owners</li>
+
+                    </ul>
+                </div>
+                <!-- #END# home dashboard sidebar -->
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <form action="/owners_update/{{ temp.id }}" method="POST">
+                    {% csrf_token %}
+                    <div class="row clearfix">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <label for="name">Name</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" name="name" id="name" class="form-control"
+                                        placeholder="Enter your Name" value="{{ temp.name }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <label for="email_address">Email Address</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" name="email" id="email_address1" class="form-control"
+                                        placeholder="Enter your email address" value="{{ temp.email }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <label for="branch">Total users</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" name="total_users" id="branch" class="form-control"
+                                        placeholder="Enter users" value="{{ temp.total_users }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <label for="cash_register">Plan Name</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" name="plan_name" id="cash_register" class="form-control"
+                                        placeholder="Enter Plan Name" value="{{ temp.plan_name }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row clearfix">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <label for="branch">Price</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" name="price" id="branch" class="form-control"
+                                        placeholder="Enter Plan Price" value="{{ temp.price }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <label for="branch">Status</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" name="status" id="branch" class="form-control"
+                                        placeholder="Enter Status" value="{{ temp.status }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <label for="name">date</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" name="date" class="form-control date"
+                                        placeholder="Ex: YYYY-MM-DD HH:MM" value="{{ temp.date|date:'Y-m-d H:i' }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <label for="name">Expiry date</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" name="expiry_date" class="form-control date"
+                                        placeholder="Ex: YYYY-MM-DD HH:MM" value="{{ temp.expiry_date|date:'Y-m-d H:i' }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="button-demo">
+                            <a href="../owners">
+                                <button type="button" class="btn btn-outline-danger btn-border-radius"
+                                    data-dismiss="modal">Back</button>
+                            </a>
+                            <button type="submit" class="btn btn-outline-success btn-border-radius">Create</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

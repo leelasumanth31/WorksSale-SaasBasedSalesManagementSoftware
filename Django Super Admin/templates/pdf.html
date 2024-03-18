@@ -1,0 +1,55 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Order Report</title>
+</head>
+
+<body>
+    <style>
+        @page {
+            size: letter portrait;
+            
+            @frame content_frame {
+                left: 50pt;
+                width: 512pt;
+                top: 50pt;
+                height: 692pt;
+                padding: 10pt;
+                -pdf-frame-border: 1;    /* for debugging the layout */
+            }
+        }
+    </style>
+    <h1 style="text-align: center;" >Order Details</h1>
+    <br>
+    <br>
+    <br>
+    <br>
+    <hr>
+    <table style="padding:1pt;" class="table   table-hover js-basic-example dataTable">
+        <thead>
+            <tr>
+                <th>ORDER ID</th>
+                <th>NAME</th>
+                <th>PLAN NAME</th>
+                <th>PRICE</th>
+                <th>STATUS</th>
+                <th>DATE</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="text-align: center;">
+                <td>1</td>
+                <td>{{owner.name}}</td>
+                <td>{{owner.plan_name}}</td>
+                <td>{{owner.price}}</td>
+                <td>{{owner.status}}</td>
+                <td>{{owner.date}}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+</body>
+
+</html>

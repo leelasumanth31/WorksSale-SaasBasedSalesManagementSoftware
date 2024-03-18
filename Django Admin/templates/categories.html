@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <!-- home dashboard Sidebar -->
+                <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                    <ul class="breadcrumb breadcrumb-item ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Categories List</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="index">
+                                <i class="fas fa-home"></i> Home</a>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-2">
+                            <a href="#" onclick="return false;">Products</a>
+                        </li>
+                        <li class="breadcrumb-item active">Catogoreis List</li>
+
+                    </ul>
+                </div>
+                <!-- #END# home dashboard sidebar -->
+                <!-- add products button -->
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+
+                    <ul class="breadcrumb breadcrumb-item ">
+                        <li>
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                data-target=".bd-example-modal-lg">
+                                Add Category</button>
+                        </li>
+                    </ul>
+                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                        aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="myLargeModalLabel">Add New Category</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="categories.html" method="POST">
+                                        {% csrf_token %}
+                                        <div class="row clearfix">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <label for="assign_role">Category Name</label>
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        <input type="text" name="name" id="assign_role"
+                                                            class="form-control" placeholder="Category Name">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <div class="button-demo">
+                                                <button type="button" class="btn btn-outline-danger btn-border-radius"
+                                                    data-dismiss="modal">Cancel</button>
+                                                <button type="submit"
+                                                    class="btn btn-outline-success btn-border-radius">Create</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- #END# add products button -->
+            </div>
+        </div>
+        <!--  TABLE -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            <strong>Category List</strong>
+                        </h2>
+                    </div>
+                    <div class="body">
+                        <div class="table-responsive">
+                            <!-- Table-->
+                            <table class="table   table-hover js-basic-example dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Category NAME</th>
+                                        <th>ACTION</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for categorieslist in categorieslistarray%}
+                                    <tr>
+                                        <td>{{ forloop.counter }}</td>
+                                        <td>{{categorieslist.name}}</td>
+                                        <td>
+                                            <div class="button-demo">
+                                                <a href="/categories_edit/{{ categorieslist.id }}">
+                                                    <button type="button"
+                                                        class="btn btn-outline-info btn-border-radius">Edit</button>
+                                                </a>
+                                                <a href="/delete_categories/{{ categorieslist.id }}">
+                                                    <button type="button"
+                                                        class="btn btn-outline-danger btn-border-radius">
+                                                        Delete
+                                                    </button>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+
+
+
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+
+                                    </tr>
+                                </tfoot>
+                            </table>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# TABLE -->
+    </div>
+</section>
+
+
+
+{% endblock %}
