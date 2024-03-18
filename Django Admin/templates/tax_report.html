@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+    <section class="content">
+        <div class="container-fluid">
+
+            
+            <div class="block-header">
+                <div class="row">
+                    <!-- home dashboard Sidebar -->
+                    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                        <ul class="breadcrumb breadcrumb-item ">
+                            <li class="breadcrumb-item">
+                                <h4 class="page-title">Tax Analysis</h4>
+                            </li>
+                            <li class="breadcrumb-item bcrumb-1">
+                                <a href="index">
+                                    <i class="fas fa-home"></i> Home</a>
+                            </li>
+                            <li class="breadcrumb-item bcrumb-2">
+                                <a href="#" onclick="return false;">Reports</a>
+                            </li>
+                            <li class="breadcrumb-item active">Tax Analysis</li>
+
+                        </ul>
+                    </div>
+                    <!-- #END# home dashboard sidebar -->
+                </div>
+            </div>
+
+            <!-- widgets-->
+            <div class="row">
+                <div class="col-lg-4 col-sm-6">
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="support-box text-center l-bg-cyan">
+                        <div class="icon m-b-10">
+                            <span class="chart chart-line-2">9,4,6,5,6,4,7,3</span>
+                        </div>
+                        <div class="text m-b-10">Total tax amount</div>
+                        <h3 class="m-b-0">
+                            Rs. {{tax_total}}
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                </div>
+            </div>
+            <!--end widgets-->
+
+            <!--  TABLE -->
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>
+                                <strong>Tax List</strong>
+                            </h2>
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <!-- Table-->
+                                <table class="table   table-hover js-basic-example dataTable">
+                                    <thead>
+                                        <tr>
+                                            
+                                            <th>REFERENCE NO.</th>
+                                            <th>DATE</th>
+                                            <th>VENDOR</th>
+                                            <th>PRODUCT TAX</th>
+                                            <th>GRAND TOTAL</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- name has been changed to tax_reports with added s to file name -->
+                                        {% for tax_reportslist in tax_reportslistarray%}
+                                        <tr>
+                                            <td><div class="badge col-cyan"><strong>#{{tax_reportslist.invoice_id}}</strong></div></td>
+                                            <td>{{tax_reportslist.date}}</td>
+                                            <td>{{tax_reportslist.sold_to}}</td>
+                                            <td>Rs. {{tax_reportslist.tax_amount}}</td>
+                                            <td>Rs. {{tax_reportslist.grand_total}}</td>
+                                            
+                                        </tr>
+                                        {% endfor %}
+
+
+
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+
+                                        </tr>
+                                    </tfoot>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# TABLE -->
+        </div>
+    </section>
+
+
+    {% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <!-- home dashboard Sidebar -->
+                <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                    <ul class="breadcrumb breadcrumb-item ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Categories List</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="index">
+                                <i class="fas fa-home"></i> Home</a>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-2">
+                            <a href="#" onclick="return false;">Products</a>
+                        </li>
+                        <li class="breadcrumb-item active">Catogoreis List</li>
+
+                    </ul>
+                </div>
+                <!-- #END# home dashboard sidebar -->
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <form action="/exp_categories_update/{{ temp.id }}" method="POST">
+                    {% csrf_token %}
+
+                    <div class="row clearfix">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <label for="assign_role">Category Name</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" name="name" value="{{ temp.name }}" id="assign_role"
+                                        class="form-control" placeholder="Category Name">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="button-demo">
+                            <a href="../exp_categories.html">
+                                <button type="button" class="btn btn-outline-danger btn-border-radius"
+                                    data-dismiss="modal">Cancel</button>
+                            </a>
+                            <button type="submit" class="btn btn-outline-success btn-border-radius">Create</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

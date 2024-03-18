@@ -1,0 +1,376 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <!-- home dashboard Sidebar -->
+                <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                    <ul class="breadcrumb breadcrumb-item ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Roles List</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="index">
+                                <i class="fas fa-home"></i> Home</a>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="#" onclick="return false;">Staff</a>
+                        </li>
+                        <li class="breadcrumb-item active">Roles</li>
+
+                    </ul>
+                </div>
+                <!-- #END# home dashboard sidebar -->
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <form action="/roles_update/{{ temp.id }}" method="POST">
+                    {% csrf_token %}
+
+
+                    <div class="row clearfix">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <label for="assign_role">Role Name</label>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" name="role" value="{{ temp.role }}" id="assign_role"
+                                        class="form-control" placeholder="Enter Role Name">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-6">
+                            <div class="form-check form-check-radio">
+                                <label>User</label>
+                                <div>
+                                    <label>
+                                        <input type="checkbox" class="settings-role" name="user_box"
+                                            value="Create and Delete User"><span>Create
+                                            User</span>
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        <input type="checkbox" class="settings-role" name="user_box"
+                                            value="Manage User"><span>Manage User</span>
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        <input type="checkbox" class="settings-role" name="user_box"
+                                            value="User None"><span>User None</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check form-check-radio">
+                                <label>Customer</label>
+                                <div>
+                                    <label>
+                                        <input type="checkbox" class="settings-role"
+                                            name="Customer_box"
+                                            value="Create and Delete Customer"><span>Create Customer</span>
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        <input type="checkbox" class="settings-role"
+                                            name="Customer_box" value="Manage Customer"><span>Manage
+                                            Customer</span>
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        <input type="checkbox" class="settings-role"
+                                            name="Customer_box" value="Customer None"><span>Customer
+                                            None</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-6">
+                            <div class="form-check form-check-radio">
+                                <label>Vendor</label>
+                                <div>
+                                    <label>
+                                        <input type="checkbox" class="settings-role"
+                                            name="Vendor_box"
+                                            value="Create Vendor"><span>Create
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        <input type="checkbox" class="settings-role"
+                                            name="Vendor_box" value="Manage Vendor"><span>Manage
+                                            Vendor</span>
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        <input type="checkbox" class="settings-role"
+                                            name="Vendor_box" value="Vendor None"><span>Vendor
+                                            None</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check form-check-radio">
+                                <label>Profile</label>
+                                <div>
+                                    <label>
+                                        <input type="checkbox" class="settings-role"
+                                            name="Profile_box"
+                                            value="Create Profile"><span>Create Profile</span>
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        <input type="checkbox" class="settings-role"
+                                            name="Profile_box" value="Manage Profile"><span>Manage
+                                            Profile</span>
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        <input type="checkbox" class="settings-role"
+                                            name="Profile_box"
+                                            value="Customer None"><span>Customer None</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- <div class="row clearfix">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <label for="assign_role">Assign Permission</label>
+                            </div>
+                        </div>
+                        <div class="body table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Moudule</th>
+                                        <th colspan="4" class="center">Permission</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">user</th>
+                                        <td class="tbl-checkbox">
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>Manage</span>
+                                            </label>
+                                        </td>
+                                        <td class="tbl-checkbox">
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>create</span>
+                                            </label>
+                                        </td>
+                                        <td class="tbl-checkbox">
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>Edit</span>
+                                            </label>
+                                        </td>
+                                        <td class="tbl-checkbox">
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>Delete</span>
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Customer</th>
+                                        <td class="tbl-checkbox">
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>Manage</span>
+                                            </label>
+                                        </td>
+                                        <td class="tbl-checkbox">
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>create</span>
+                                            </label>
+                                        </td>
+                                        <td class="tbl-checkbox">
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>Edit</span>
+                                            </label>
+                                        </td>
+                                        <td class="tbl-checkbox">
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>Delete</span>
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Vendor</th>
+                                        <td class="tbl-checkbox">
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>Manage</span>
+                                            </label>
+                                        </td>
+                                        <td class="tbl-checkbox">
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>create</span>
+                                            </label>
+                                        </td>
+                                        <td class="tbl-checkbox">
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>Edit</span>
+                                            </label>
+                                        </td>
+                                        <td class="tbl-checkbox">
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>Delete</span>
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Role</th>
+                                        <td class="tbl-checkbox">
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>Manage</span>
+                                            </label>
+                                        </td>
+                                        <td class="tbl-checkbox">
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>create</span>
+                                            </label>
+                                        </td>
+                                        <td class="tbl-checkbox">
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>Edit</span>
+                                            </label>
+                                        </td>
+                                        <td class="tbl-checkbox">
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>Delete</span>
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Notification</th>
+                                        <td class="tbl-checkbox">
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>Manage</span>
+                                            </label>
+                                        </td>
+                                        <td class="tbl-checkbox">
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>create</span>
+                                            </label>
+                                        </td>
+                                        <td class="tbl-checkbox">
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>Edit</span>
+                                            </label>
+                                        </td>
+                                        <td class="tbl-checkbox">
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>Delete</span>
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Profile</th>
+                                        <td class="tbl-checkbox">
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>Manage</span>
+                                            </label>
+                                        </td>
+                                        
+                                        <td class="tbl-checkbox">
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>Edit</span>
+                                            </label>
+                                        </td>
+                                        <td class="tbl-checkbox">
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>Delete</span>
+                                            </label>
+                                        </td>
+                                    </tr>
+                                    <tr >
+                                        <th scope="row">Account</th>
+                                        <td class="tbl-checkbox">
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>Manage purchases</span>
+                                            </label>
+                                        </td>
+                                        <td class="tbl-checkbox">
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>Manage sales</span>
+                                            </label>
+                                        </td>
+                                        <td class="tbl-checkbox">
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>manage orders</span>
+                                            </label>
+                                        </td>
+                                        <td class="tbl-checkbox">
+                                            <label>
+                                                <input type="checkbox" />
+                                                <span>Billing settings</span>
+                                            </label>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div> -->
+
+
+
+                    <div class="modal-footer">
+                        <div class="button-demo">
+                            <a href="../roles.html">
+                                <button type="button" class="btn btn-outline-danger btn-border-radius"
+                                    data-dismiss="modal">Cancel</button>
+                            </a>
+                            <button type="submit" class="btn btn-outline-success btn-border-radius">Create</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

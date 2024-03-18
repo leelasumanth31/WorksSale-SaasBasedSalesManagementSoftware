@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <!-- home dashboard Sidebar -->
+                <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                    <ul class="breadcrumb breadcrumb-item ">
+                        <li class="breadcrumb-item">
+                            <h4 class="page-title">Vendor List</h4>
+                        </li>
+                        <li class="breadcrumb-item bcrumb-1">
+                            <a href="index">
+                                <i class="fas fa-home"></i> Home</a>
+                        </li>
+                        <li class="breadcrumb-item active">Vendor</li>
+
+                    </ul>
+                </div>
+                <!-- #END# home dashboard sidebar -->
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <form action="/vendors_update/{{ temp.id }}" method="POST">
+                        {% csrf_token %}
+
+                        <div class="row clearfix">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <label for="name">Name</label>
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="text" name="name" value="{{ temp.name }}" id="name"
+                                            class="form-control" placeholder="Enter your Name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <label for="email_address">Email Address</label>
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="text" name="email" value="{{ temp.email }}" id="email_address1"
+                                            class="form-control" placeholder="Enter your email address">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <label for="email_address">Phone Number</label>
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="text" name="phone_number" value="{{ temp.phone_number }}"
+                                            id="email_address1" class="form-control" placeholder="Enter Phone number">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <label for="name">date</label>
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <input type="text" name="date" value="{{ temp.date|date:'Y-m-d H:i' }}" class="form-control date"
+                                            placeholder="Ex: YYYY-MM-DD HH:MM">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="button-demo">
+                                <a href="../vendors.html">
+                                    <button type="button" class="btn btn-outline-danger btn-border-radius"
+                                        data-dismiss="modal">Cancel</button>
+                                </a>
+                                <button type="submit" class="btn btn-outline-success btn-border-radius">Create</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
